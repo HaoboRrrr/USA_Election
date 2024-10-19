@@ -20,7 +20,7 @@ library(splines)
 
 
 #### Clean data ####
-data <- read_csv("data/01-raw_data/raw_data.csv") |> clean_names
+data <- read_csv("data/01-raw_data/raw_data.csv") |> clean_names()
 
 # Filter data to Harris estimates based on high-quality polls after she declared
 just_harris_high_quality <- data |>
@@ -42,6 +42,9 @@ just_harris_high_quality <- data |>
 base_plot <- ggplot(just_harris_high_quality, aes(x = end_date, y = pct)) +
   theme_classic() +
   labs(y = "Harris percent", x = "Date")
-base_plot
+base_plot +
+  geom_point() +
+  geom_smooth()
+
 #### Save data ####
 
