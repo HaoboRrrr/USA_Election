@@ -15,20 +15,10 @@ set.seed(853)
 
 
 #### Simulate data ####
-# State names
-states <- c(
-  "New South Wales",
-  "Victoria",
-  "Queensland",
-  "South Australia",
-  "Western Australia",
-  "Tasmania",
-  "Northern Territory",
-  "Australian Capital Territory"
-)
+
 
 # Political parties
-parties <- c("Labor", "Liberal", "Greens", "National", "Other")
+candidates <- c("Trump", "Harris", "Kennedy", "Stein", "West")
 
 # Create a dataset by randomly assigning states and parties to divisions
 analysis_data <- tibble(
