@@ -1,11 +1,11 @@
 #### Preamble ####
-# Purpose: Cleans the raw plane data recorded by two observers..... [...UPDATE THIS...]
-# Author: Rohan Alexander [...UPDATE THIS...]
-# Date: 6 April 2023 [...UPDATE THIS...]
-# Contact: rohan.alexander@utoronto.ca [...UPDATE THIS...]
+# Purpose: Cleans the raw data and extract required data.
+# Author: David QI
+# Date: 22 Oct 2024
+# Contact: david.qi@mail.utoronto.ca 
 # License: MIT
-# Pre-requisites: [...UPDATE THIS...]
-# Any other information needed? [...UPDATE THIS...]
+# Pre-requisites: data in data/01-raw_data/raw_data.csv, data/01-raw_data/DJIA.csv
+# Any other information needed? No
 
 #### Workspace setup ####
 
@@ -17,6 +17,9 @@ library(broom)
 library(modelsummary)
 library(rstanarm)
 library(splines)
+library(dplyr)
+library(tidyr)
+# TODO: check if all these libraries are needed
 
 
 #### Clean data ####
@@ -46,5 +49,21 @@ base_plot +
   geom_point() +
   geom_smooth()
 
-#### Save data ####
+#### Clean DJI data $$$$
+# Objective: fill the missing days with closest days.
+DJIdata <- read_csv("data/01-raw_data/DJIA.csv")
 
+DJIdata$DJIA <- as.numeric(DJIdata$DJIA)
+DJIdata <- na.omit(DJIdata)
+complete_dates <- data.frame(DATE = seq(min(DJIdata$DATE), max(DJIdata$DATE), by = "day"))
+
+filled_data <- complete_dates %>%
+  left_join(DJIdata, by = "DATE")
+
+filled_data <- filled_data %>%
+  fill(DJIA)
+
+
+#### Save data ####
+write_csv(just_harris_high_quality, "data/02-analysis_data/just_harris_high_quality.csv")
+write_csv(filled_data , "data/02-analysis_data/DJIA_filled.csv")
