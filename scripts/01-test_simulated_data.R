@@ -52,7 +52,7 @@ if (all(abs(poll_results$Harris_reg + poll_results$Trump_reg + poll_results$Othe
   stop("Test Failed: support rate adds up to value other than 100")
 }
 
-# Check if We have stock data for revelent dates.
+# Check if We have stock data for relevant dates.
 if (all(poll_results$end_dates %in% stock_results$dates)) {
   message("Test Passed: We have DJIA index for all relevent dates.")
 } else {
