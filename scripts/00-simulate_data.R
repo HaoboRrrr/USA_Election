@@ -15,7 +15,6 @@ set.seed(853)
 
 #### Simulate data ####
 
-
 n_polls <- 50   # Number of polls
 mean_support_harris <- 45 # Average support for Kamala Harris (%)
 mean_support_trump <- 45  # Average support for Donald Trump (%)

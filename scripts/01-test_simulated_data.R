@@ -56,11 +56,11 @@ if (all(abs(poll_results$Harris_reg + poll_results$Trump_reg + poll_results$Othe
 if (all(poll_results$end_dates %in% stock_results$dates)) {
   message("Test Passed: We have DJIA index for all relevent dates.")
 } else {
-  stop("Test Failed: We have DJIA index for all relevent dates.")
+  stop("Test Failed: We don't have DJIA index for all relevent dates.")
 }
 
 # Check if there are any negative values
-if (all(poll_results$Harris_reg> 0) & all(poll_results$Trump_reg> 0 & all(poll_results$Other_reg> 0))) {
+if (all(poll_results$Harris_reg>= 0) & all(poll_results$Trump_reg>= 0 & all(poll_results$Other_reg>= 0))) {
   message("Test Passed: Support rates are non-negative")
 } else {
   stop("Test Failed: There exist nagative support rate.")
