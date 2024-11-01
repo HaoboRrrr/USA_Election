@@ -35,7 +35,7 @@ if (exists("stock_results")) {
 if (nrow(poll_results) == 50) {
   message("Test Passed: The dataset has 50 rows.")
 } else {
-  stop("Test Failed: The dataset does not have 151 rows.")
+  stop("Test Failed: The dataset does not have 50 rows.")
 }
 
 # Check if the dataset has 8 columns
