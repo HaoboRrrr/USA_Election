@@ -9,12 +9,8 @@
 
 #### Workspace setup ####
 
-library(ggplot2)
 library(tidyverse)
 library(janitor)
-library(lubridate)
-# TODO: check if all these libraries are needed
-
 
 #### Clean data ####
 data <- read_csv("data/01-raw_data/raw_data.csv") |> clean_names()
