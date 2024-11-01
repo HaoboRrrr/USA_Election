@@ -19,7 +19,10 @@ The repo is structured as:
 Aspects of the code were written with the help of Chatgpt3.5. The title were written with the help of ChatGPT3.5. The entire chat history is available in inputs/llms/usage.txt.
 
 ## TODOs:
-build model 
-plot model
-citation
-...
+### Part finished: 
+- Script part: change file format parquet to fit with requirement
+- Appendix 2(idealized methodology): update according to comment
+### Parts waiting: 
+- Main Essay
+- Appendix 1(Analysis methodology)
+- Appendix 3(model selection)
