@@ -104,8 +104,120 @@ finishing reading https://dspacemainprd01.lib.uwaterloo.ca/server/api/core/bitst
 
 # Appendix 1: Polling methodology
 
+
+
 # Appendix 2: Ideal methodology and survey
 
+## Objective
+The survey aims to precisely capture voter intention and mood across important demographic and geographic divisions in order to predict the result of the US presidential election.
+
+## Sampling Approach
+* Stratified Random Sampling: To replicate the national electorate, stratify the sample according to age, gender, race/ethnicity, education level, urban/rural domicile, and area.
+
+* Sample Size: Aim for a starting sample of five thousand people. This results in around 2000 to 2500 replies every wave, assuming a response rate of 40–50%.
+
+## Respondent Recruitment
+* Panel Providers: Partner with an online panel provider to find respondents that match each stratum’s specifications.Specify quotas to ensure that, for instance, you have 18% of respondents from the Midwest or 25% aging between 30 - 40.
+
+* Random Sampling: Randomly select respondent within each strata.
+
+* Incentives: To promote greater response rates and retention, provide a small monetary reward, such as $5 to $10 for each completed survey.
+
+* Multi-Mode: To improve inclusivity and take into consideration differences in internet availability, use both phone and online surveys.
+
+
+## Data Validation
+* De-duplication: To keep distinct replies between waves, make sure respondents don't participate more than once each wave.
+
+* Quality checks: highlight straight-lining, inconsistent replies, and other low-effort answers.
+
+## Essential Questions
+* Are you currently registered to vote?
+  - Yes
+  - No 
+  
+* Which state are you currently registered to vote in?
+  (short answer)
+  
+* Do you plan to vote in the upcoming Presidential election?
+  - Yes, I plan to vote in person on election day
+  - Yes, I plan to vote in person early
+  - Yes, I plan to vote by mail
+  - No, I do not plan to vote
+
+* If the election were held today, who would you vote for?
+  - Democrat Kamala Harris
+  - Republican Donald Trump
+  - A third party / Independent candidate
+  - Unsure
+  
+* How certain are you about your choice
+  - Scale 1 to 5
+  
+* Your gender idetification
+  - Female
+  - Male
+  - Other
+  
+* Age Range
+  - 18 to 24
+  - 25 to 29
+  - 30 to 39
+  - 40 to 49
+  - 50 to 59
+  - 60 or older
+
+* Which of the following best describes your racial background?
+  - White or Caucasion
+  - Black or African American
+  - Hispanic
+  - Asian or Pacific Islander
+  - Native American
+  - Other
+
+
+* How would you describe your educational level
+  - High School or less
+  - College Graduate
+  - Post-graduate degree
+  - Unsure
+
+* Employment Status
+  - Full time
+  - Part time
+  - Unemployed
+
+* What's your estimated household income?
+  - Under $30,000
+  - \$30k - \$49,999
+  - \$50k - \$99,999
+  - \$100k - \$199,999
+  - \$200k - \$249,999
+  - \$250k or more
+  - Unsure
+
+* Do you consider yourself to be lesbian, gay, bisexual, transgender, queer or
+questioning?
+  - Yes
+  - No
+  - Unsure
+  - Prefer not to answer
+
+* Would you best describe the neighborhood or area you live in as
+  - Urban
+  - Suburban
+  - Rural
+  - Unsure
+
+* What is your religious background
+  - Religious
+  - Spiritual
+  - Not religious or spiritual
+  
+
+Link to the survey: https://forms.gle/spJjASENRQ6nKK1E6
+
 # References
+
 
 
