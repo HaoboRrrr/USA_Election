@@ -4,16 +4,17 @@
 # Date: 01 November 2024
 # Contact: david.qi@mail.utoronto.ca 
 # License: MIT
-# Pre-requisites: DJIA_filled.csv, just_trump_high_quality.csv, just_harris_high_quality.csv are in data/02-analysis_data
+# Pre-requisites: DJIA_filled.parquet, just_trump_high_quality.parquet, just_harris_high_quality.parquet are in data/02-analysis_data
 # Any other information needed? No.
 
 
 #### Workspace setup ####
 library(tidyverse)
+library(arrow)
 
-harris_data <- read_csv("data/02-analysis_data/just_harris_high_quality.csv") %>% select(pct, start_date,end_date,question_id)
-trump_data <- read_csv("data/02-analysis_data/just_trump_high_quality.csv") %>% select(pct, start_date,end_date,question_id)
-DJIA_data = read_csv("data/02-analysis_data/DJIA_filled.csv")
+harris_data <- read_parquet("data/02-analysis_data/just_harris_high_quality.parquet") %>% select(pct, start_date,end_date,question_id,state)
+trump_data <- read_parquet("data/02-analysis_data/just_trump_high_quality.parquet") %>% select(pct, start_date,end_date,question_id,state)
+DJIA_data = read_parquet("data/02-analysis_data/DJIA_filled.parquet")
 
 # Test if the data was successfully loaded
 if (exists("harris_data")) {
@@ -57,6 +58,15 @@ if (!any(duplicated(harris_data))) {
   stop("Test Failed: The Harris dataset contains duplicates.")
 }
 
+# Check if data only include relevant states
+if (all(harris_data$state %in% c("North Carolina", "Pennsylvania", "Georgia", "Nevada",
+                                "Arizona", "Michigan", "Wisconsin", 
+                                "National", "Maine CD-2", "Florida"))){
+  message("Test Passed: Harris Data set only contain data for relevant states")
+}else{
+  stop("Test Failed: Harris data set have for states that we are not modeling")
+}
+
 #### Test Trump data ####
 
 # Check if there are any negative values
@@ -80,6 +90,15 @@ if (!any(duplicated(trump_data))) {
   stop("Test Failed: The Trump dataset contains duplicates.")
 }
 
+# Check if data only include relevant states
+if (all(trump_data$state %in% c("North Carolina", "Pennsylvania", "Georgia","Nevada", 
+                                "Arizona", "Michigan", "Wisconsin", 
+                                "National", "Maine CD-2", "Florida"))){
+  message("Test Passed: Trump Data set only contain data for relevant states")
+}else{
+  stop("Test Failed: Trump data set have for states that we are not modeling")
+}
+
 #### Test Harris and Trump data combined ####
 
 # Check if support rate add to value less than 100
@@ -90,11 +109,21 @@ if (all(total$pct.x + total$pct.y <= 100)) {
   stop("Test Failed: support rate adds up to value greater than 100")
 }
 
+# Check if data only include relevant states
+
+if (all(total$state %in% c("North Carolina", "Pennsylvania", "Georgia", 
+             "Arizona", "Michigan", "Wisconsin", 
+             "National", "Maine CD-2", "Florida"))){
+  message("Test Passed: Data set only contain data for relevant states")
+}else{
+  stop("Test Failed: We have data for states that we are not modeling")
+}
+
 # Check if the questionnaires are the same
 if (all(harris_data$question_id %in% trump_data$question_id) & length(harris_data$question_id) == length(trump_data$question_id)) {
   message("Test Passed: Harris and Trump dataset are from the same set of questionnaires")
 } else {
-  stop("Test Failed: HArris and Trump dataset are from the different set of questionnaires")
+  stop("Test Failed: Harris and Trump dataset are from the different set of questionnaires")
 }
 
 #### Test DJIA data ####

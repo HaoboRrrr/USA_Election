@@ -10,11 +10,12 @@
 
 #### Workspace setup ####
 library(tidyverse)
+library(arrow)
 
 #### Read data ####
-harris_data <- read_csv("data/02-analysis_data/just_harris_high_quality.csv") %>% select(pct, start_date,end_date)
-trump_data <- read_csv("data/02-analysis_data/just_trump_high_quality.csv") %>% select(pct, start_date,end_date)
-DJIA_data = read_csv("data/02-analysis_data/DJIA_filled.csv")
+harris_data <- read_parquet("data/02-analysis_data/just_harris_high_quality.parquet") %>% select(pct, start_date,end_date,question_id,state)
+trump_data <- read_parquet("data/02-analysis_data/just_trump_high_quality.parquet") %>% select(pct, start_date,end_date,question_id,state)
+DJIA_data = read_parquet("data/02-analysis_data/DJIA_filled.parquet")
 
 ### Model data ####
 # prepare data
@@ -32,6 +33,8 @@ DJIA_data = DJIA_data %>%  # Create lagged variables
          DJIA_lag_28 = lag(DJIA, n = 28),
          DJIA_lag_60 = lag(DJIA, n = 60),
          DJIA_lag_90 = lag(DJIA, n = 90),
+         DJIA_lag_120 = lag(DJIA, n = 120),
+         DJIA_lag_150 = lag(DJIA, n = 150),
          DJIA_lag_180 = lag(DJIA, n = 180),
   )
 
@@ -42,24 +45,27 @@ merged_harris_data <- harris_data %>%
 # Remove rows with NA values (may occur due to lagging)
 merged_harris_data <- na.omit(merged_harris_data)
 
+# Model
+
 # Fit the linear regression model
-model_harris <- lm(pct ~ 0+DJIA_lag_7+DJIA_lag_14 +DJIA_lag_60 +DJIA_lag_90+ DJIA_lag_180, data = merged_harris_data)
+model_harris <- lm(pct ~  DJIA_lag_7 + DJIA_lag_14+DJIA_lag_28+DJIA_lag_60 + DJIA_lag_150+ DJIA_lag_180+state,data = merged_harris_data)
+
 
 # Summarize the model
 summary(model_harris)
 AIC(model_harris)
 
 # Recorded AIC of tested models: 
-# 0+DJIA_lag_60 + DJIA_lag_180: 4361.658
-# DJIA_lag_60 + DJIA_lag_180: 4363.403
-# DJIA_lag_14+DJIA_lag_60 + DJIA_lag_180: 4363.68
-# DJIA_lag_7 + DJIA_lag_14+DJIA_lag_28+DJIA_lag_60 +DJIA_lag_90+ DJIA_lag_180: 4351.305
-# DJIA_lag_7 +DJIA_lag_28+DJIA_lag_60 +DJIA_lag_90+ DJIA_lag_180: 4349.33
-# 0+DJIA_lag_7 +DJIA_lag_28+DJIA_lag_60 +DJIA_lag_90+ DJIA_lag_180:4347.386
-# 0+DJIA_lag_7 +DJIA_lag_60 +DJIA_lag_90+ DJIA_lag_180: 4346.483
-# DJIA_lag_7 +DJIA_lag_60 +DJIA_lag_90+ DJIA_lag_180: 4348.452
-# DJIA_lag_7 + DJIA_lag_14 +DJIA_lag_90: 4368.93
-# 0+DJIA_lag_7+DJIA_lag_14 +DJIA_lag_60 +DJIA_lag_90+ DJIA_lag_180: 4348.404
+# DJIA_lag_7 + DJIA_lag_14+DJIA_lag_28+DJIA_lag_60 +DJIA_lag_90+DJIA_lag_120+DJIA_lag_150+ DJIA_lag_180+state: 2785.518
+# DJIA_lag_7 + DJIA_lag_14+DJIA_lag_60 +DJIA_lag_90+DJIA_lag_120+DJIA_lag_150+ DJIA_lag_180+state: 2783.721
+# DJIA_lag_7 + DJIA_lag_14 +DJIA_lag_90+DJIA_lag_120+DJIA_lag_150+ DJIA_lag_180+state: 2781.809(best AIC) 
+# DJIA_lag_7 + DJIA_lag_14 +DJIA_lag_120+DJIA_lag_150+ DJIA_lag_180+state: 2782.749
+# DJIA_lag_7 + DJIA_lag_14 + DJIA_lag_90 + DJIA_lag_150 + DJIA_lag_180 + state: 2784.388
+# DJIA_lag_7 + DJIA_lag_14 + DJIA_lag_150 + DJIA_lag_180 + state: 2783.104
+# DJIA_lag_14 + DJIA_lag_150 + DJIA_lag_180 + state: 2790.254
+# DJIA_lag_14+DJIA_lag_28+DJIA_lag_60 + DJIA_lag_150+ DJIA_lag_180+state: 2793.49
+# DJIA_lag_7 + DJIA_lag_14+DJIA_lag_28+DJIA_lag_60 + DJIA_lag_150+ DJIA_lag_180+state: 2785.338 (Chosen)
+
 
 merged_trump_data <- trump_data %>%
   # Left join with DJIA_data based on dates, shifting for lag
@@ -70,27 +76,22 @@ merged_trump_data <- trump_data %>%
 merged_trump_data <- na.omit(merged_trump_data)
 
 # Fit the linear regression model
-model_trump <- lm(pct ~  0+DJIA_lag_7+DJIA_lag_14 +DJIA_lag_60 +DJIA_lag_90+ DJIA_lag_180, data = merged_trump_data)
+model_trump <- lm(pct ~  DJIA_lag_7 + DJIA_lag_14+DJIA_lag_28+DJIA_lag_60 + DJIA_lag_150+ DJIA_lag_180+state, data = merged_trump_data)
 
 # Summarize the model
 summary(model_trump)
 AIC(model_trump)
 
 # Recorded AIC of tested models: 
-# 0+DJIA_lag_60 + DJIA_lag_180: 4416.838
-# DJIA_lag_60 + DJIA_lag_180: 4415.838
-# DJIA_lag_14+DJIA_lag_60 + DJIA_lag_180: 4392.898
-# DJIA_lag_7 + DJIA_lag_14+DJIA_lag_28+DJIA_lag_60 +DJIA_lag_90+ DJIA_lag_180: 4392.119
-# DJIA_lag_7 + DJIA_lag_14+DJIA_lag_60 +DJIA_lag_90+ DJIA_lag_180: 4390.328
-# DJIA_lag_7 + DJIA_lag_14 +DJIA_lag_90+ DJIA_lag_180: 4388.661
-# DJIA_lag_7 + DJIA_lag_14 +DJIA_lag_90: 4387.064
-# 0+DJIA_lag_7 + DJIA_lag_14 +DJIA_lag_90: 4387.54
-# DJIA_lag_14 +DJIA_lag_90: 4388.565
-# DJIA_lag_7 +DJIA_lag_28+DJIA_lag_60 +DJIA_lag_90+ DJIA_lag_180: 4404.42
-# 0+DJIA_lag_7 +DJIA_lag_28+DJIA_lag_60 +DJIA_lag_90+ DJIA_lag_180:4402.483
-# 0+DJIA_lag_7 +DJIA_lag_60 +DJIA_lag_90+ DJIA_lag_180: 4401.229
-# DJIA_lag_7 +DJIA_lag_60 +DJIA_lag_90+ DJIA_lag_180: 4403.22
-# 0+DJIA_lag_7+DJIA_lag_14 +DJIA_lag_60 +DJIA_lag_90+ DJIA_lag_180: 4388.33
+# DJIA_lag_7 + DJIA_lag_14+DJIA_lag_28+DJIA_lag_60 +DJIA_lag_90+DJIA_lag_120+DJIA_lag_150+ DJIA_lag_180+state: 2819.526
+# DJIA_lag_14+DJIA_lag_28+DJIA_lag_60 +DJIA_lag_90+DJIA_lag_120+DJIA_lag_150+ DJIA_lag_180+state: 2818.029
+# DJIA_lag_7 + DJIA_lag_14 +DJIA_lag_28 +DJIA_lag_90+DJIA_lag_120+DJIA_lag_150+ DJIA_lag_180+state: 2823.345
+# DJIA_lag_7 + DJIA_lag_14 +DJIA_lag_90+DJIA_lag_120+DJIA_lag_150+ DJIA_lag_180+state: 2821.546
+# DJIA_lag_7 + DJIA_lag_14+DJIA_lag_28+DJIA_lag_60 +DJIA_lag_90+ DJIA_lag_150+ DJIA_lag_180+state: 2817.58
+# DJIA_lag_14+DJIA_lag_28+DJIA_lag_60 +DJIA_lag_90+ DJIA_lag_150+ DJIA_lag_180+state: 2816.102 (best AIC)
+# DJIA_lag_14+DJIA_lag_28+DJIA_lag_60 + DJIA_lag_150+ DJIA_lag_180+state: 2816.666 
+# DJIA_lag_7+ DJIA_lag_14+DJIA_lag_28+DJIA_lag_60 + DJIA_lag_150+ DJIA_lag_180+state: 2818.401 (Chosen)
+
 
 acf(resid(model_trump))
 pacf(resid(model_trump))
