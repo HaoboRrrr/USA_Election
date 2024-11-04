@@ -104,6 +104,46 @@ finishing reading https://dspacemainprd01.lib.uwaterloo.ca/server/api/core/bitst
 
 # Appendix 1: Polling methodology
 
+## Overview of Morning Consult
+Morning Consult is a globally renowned enterprise technology company that specializes in providing intelligent data to support leaders' decision-making processes. Morning Consult has established itself as a key player in the field of artificial intelligence and decision-making consulting. The company offers a suite of services that include market research, brand analysis, consumer behavior studies, and more. So that the company can optimize decision-making processes and provide clients with a competitive edge[@morningconsult_website]
+
+## Features of the Sample
+
+  - Population: The survey aims at all the American citizens who is eligible to vote in the 2024 presidential election in all the parties.
+
+  - Sampling Frame: A list of the American citizen’s email address and telephone number. 
+
+  - Sample Size: The polling samples showed a time range from 2011 to 2024. During each election period, the sample size varies a lot. The sample size ranges from 111 to 78247 across the voting period. 
+
+## Sample Recruitment
+
+The company used many sampling methods, such as online panel, live phone call, text, emails and a mix of these approaches. During the recruitment, the data was collected by contacting landlines via Interactive Voice Response. The sampling teams made phone calls and sent text message to randomly selected phone numbers, and collect their responses. The online team collect votes from the active users in the websites and other online panel of voters provided by research marketplace such as CINT. However, some of the polling results come from a survey from long ago, which means that it might be incorrect or biased[@morningconsult_poll]. 
+
+## Sample Approach
+
+Both probability and non-probability sampling methods are involved in the sample collection. For the people surveyed via phone calls and text messages, the main sampling method is Simple Random Sample (SRS). While for those sampled via online panel, the main approach is convenience sample. 
+
+The Morning Consult company used so-called "tracking polls" [@morningconsult_poll], interviews from a certain period are incorporated into future polls, getting reweighted with different samples until they are too old and dropped from the analysis. 
+
+## Strengths and Weakness
+
+Strengths: Since both probability and non-probability sampling methods are used, the pollster can cover a wider range of people surveyed. This means that the sample result can better represent the whole population. Also, the reweighting mechanism can guarantee different methods can have different influence on the final result. 
+
+Weakness: According to the data collected, majority of the pollster are done by the convenience sample, which is a non-probability sampling. Thus the actual surveyed population may be biased from the target population, and the result may be less representative. Additionally, the survey showed some overlapping time period, which means that some opinions of the interviewers may be counted more than once. 
+
+## Non-response Handling
+
+Just like all the surveys, non-response bias is the biggest challenge met during the pollster. This is also the greatest factor that may affect the effectiveness of the survey. In all these sampling recruitment and sampling approaches, a portion of the respondents would fail to answer the survey questions as required for various reasons (such as refusing to participate, being unreachable, or being unable to understand the survey questions). 
+
+Based on the online research, Morning Consult company usually adopt these measures to minimize the effect of the non-response bias, such as increasing the survey response rate, following up with non-respondents, and using a broader sample for the survey. Additionally, by comparing and analyzing the characteristics of respondents and non-respondents and supplementing the data with other relevant sources, researchers can further assess the influence of non-response bias on the study results.
+
+According to the collected data, we can also see that all the sample recruitment methods request the use of the cell phone. This automatically left out the people who do not use cell phones or who do not use Internet, such as some old people. But this type of non-response bias is still unsolved.  
+
+## Comments of the Questionnaire
+
+The good thing about the questionnaires is that most of the questions are direct and easy to understand. So that this can avoid the bias due to misunderstanding of the questions. Secondly, the questionnaire is short, which makes more people willing to answer without causing waste of time. 
+
+On the other hand, the questionnaire requests the interviewers to identify their party, which may cause people not willing to vote for the candidates from the other party, even though they actually want to. This will also cause a slight bias in the response. 
 
 
 # Appendix 2: Ideal methodology and survey
@@ -118,7 +158,7 @@ This survey employs Stratified Random Sampling, which involves divide the target
 Partner with an online panel provider to find respondents that match each stratum’s specifications[@stantchevaonline]. Specify quotas to ensure that, for instance, you wish to have 18% of respondents from the Midwest or 25% aging between 30 - 40. Then randomly select respondent within each strata. To promote greater response rates and retention, provide a small monetary reward, such as $5 for each completed survey. To improve inclusivity and take into consideration differences in internet availability, use both phone and online surveys. 
 
 ## Data Validation
-To keep distinct replies between responses, make sure respondents don't participate more than once each wave, and highlight straight-lining, inconsistent replies, and other low-effort answers for data quality purposes[@horn1997effective]
+To keep distinct replies between responses, make sure respondents don't participate more than once each wave, and highlight straight-lining, inconsistent replies, and other low-effort answers for data quality purposes[@horn1997effective].
 
 ## Budget Expenditure
 * \$50k - \$60k for panel provider
