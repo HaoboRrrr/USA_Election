@@ -12,7 +12,7 @@ According to our calculations, Donald Trump has a 6.6% chance of winning this el
 The repo is structured as:
 
 -   `data/00-simulated_data` contains the simulated dataset.
--   `data/01-raw_data` contains raw data downloaded from https://projects.fivethirtyeight.com/polls/president-general/2024/national/(not uploaded due to licensing concerns, but can be dowloaded using scripts/02-download_data.R by user)
+-   `data/01-raw_data` contains raw data downloaded from https://projects.fivethirtyeight.com/polls/president-general/2024/national/ (not uploaded due to licensing concerns, but can be dowloaded using scripts/02-download_data.R by user)
 -   `data/02-analysis_data` contains the cleaned dataset that was constructed.
 -   `models` contains the rds file for Harris and Trump.
 -   `other` contains details about LLM chat interactions, and sketches.
