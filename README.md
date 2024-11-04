@@ -9,8 +9,8 @@ This repo is for Analysis on USA Election
 The repo is structured as:
 
 -   `data/00-simulated_data` contains the simulated dataset.
--   `data/raw_data` contains the raw data as obtained from FiveThirtyEight.
--   `data/analysis_data` contains the cleaned dataset that was constructed.
+-   `data/01-raw_data` contains raw data downloaded from https://projects.fivethirtyeight.com/polls/president-general/2024/national/
+-   `data/02-analysis_data` contains the cleaned dataset that was constructed.
 -   `models` contains the rds file for Harris and Trump.
 -   `other` contains details about LLM chat interactions, and sketches.
 -   `paper` includes the paper's PDF and the files used to create it, such as the Quarto manuscript and reference bibliography file. 
