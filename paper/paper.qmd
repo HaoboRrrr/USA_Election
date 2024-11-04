@@ -112,15 +112,13 @@ finishing reading https://dspacemainprd01.lib.uwaterloo.ca/server/api/core/bitst
 The survey aims to capture voter intention and mood across important demographic and geographic divisions in order to predict the result of the US presidential election. This survey's methodology employs stratify sampling, effective respondent recruitment strategy and data validation techniques to ensure the accuracy of prediction.
 
 ## Sampling Approach
-This survey employs Stratified Random Sampling, which involves divide the target population(In this case, the people who are eligible to vote in US) into subgroups(strata) based on their demographics characteristic. To simulate the national electorate, stratify the sample according to age, gender, race/ethnicity, education level, urban/rural domicile, and region. Also refer to the US Census data to determine the proportion of each strata, for example: if the census data shows there are 20% US citizen are between the age of 20 to 30, then there should be 20% of respondent in this age range. We aim for a starting sample of five thousand people since there were budget constraint.
+This survey employs Stratified Random Sampling, which involves divide the target population(In this case, the people who are eligible to vote in US) into subgroups(strata) based on their demographics characteristic[@stantchevaonline]. To simulate the national electorate, stratify the sample according to age, gender, race/ethnicity, education level, urban/rural domicile, and region. Also refer to the US Census data to determine the proportion of each strata, for example: if the census data shows there are 20% US citizen are between the age of 20 to 30, then there should be 20% of respondent in this age range. We aim for a starting sample of five thousand people since there were budget constraint.
 
 ## Respondent Recruitment
-Partner with an online panel provider to find respondents that match each stratum’s specifications.Specify quotas to ensure that, for instance, you wish to have 18% of respondents from the Midwest or 25% aging between 30 - 40. Then randomly select respondent within each strata. To promote greater response rates and retention, provide a small monetary reward, such as $5 for each completed survey. To improve inclusivity and take into consideration differences in internet availability, use both phone and online surveys. 
+Partner with an online panel provider to find respondents that match each stratum’s specifications[@stantchevaonline]. Specify quotas to ensure that, for instance, you wish to have 18% of respondents from the Midwest or 25% aging between 30 - 40. Then randomly select respondent within each strata. To promote greater response rates and retention, provide a small monetary reward, such as $5 for each completed survey. To improve inclusivity and take into consideration differences in internet availability, use both phone and online surveys. 
 
 ## Data Validation
-* De-duplication: To keep distinct replies between waves, make sure respondents don't participate more than once each wave.
-
-* Quality checks: highlight straight-lining, inconsistent replies, and other low-effort answers.
+To keep distinct replies between responses, make sure respondents don't participate more than once each wave, and highlight straight-lining, inconsistent replies, and other low-effort answers for data quality purposes[@horn1997effective]
 
 ## Budget Expenditure
 * \$50k - \$60k for panel provider
@@ -129,9 +127,24 @@ Partner with an online panel provider to find respondents that match each stratu
 * \$5k for data analysis
 
 ## Survey Structure
-This survey will focus only on collecting participants' preferences for presidential candidates, not senate elections.Therefore, this survey only asks participants' choice of their favored presidential candidates. This design can make the entire questionnaire more simplify, while also collecting key data for predicting the presidential election.
 
-Screener Section: Screening out people who are eligible to vote in each state. This can filter out participants who are not eligible to vote, thereby improving the accuracy of the prediction results.
+### Introduction:
+
+First of all, thank you for taking the time to participate in this survey.
+
+This survey aims to precisely capture voter intention and mood across important demographic and geographic divisions in order to predict the result of the US presidential election.
+
+Please note:
+
+  - Your responses will remain confidential.
+  
+  - Please answer the question honestly.
+  
+  - Complete the survey will receive a reward for \$5 - \$10.
+
+If you have concerns or questions, reach out to haobo.ren@mail.utoronto.ca (Haobo Ren)
+
+### Screener Section: Screening out people who are eligible to vote in each state. 
 
 * Are you currently registered to vote?
   - Yes
@@ -140,7 +153,7 @@ Screener Section: Screening out people who are eligible to vote in each state. T
 * Which state are you currently registered to vote in?
   - (Drop down box)
   
-Presidential Ballot Section: Ask participants whether they would vote, who they would vote for, and how confident they are about that. This section can be used to find out the proportion of votes each candidate received among the participants.
+### Presidential Ballot Section: Ask participants whether they would vote, who they would vote for, and how confident they are about that. 
 
 * Do you plan to vote in the upcoming Presidential election?
   - Yes, I plan to vote in person on election day
@@ -157,7 +170,7 @@ Presidential Ballot Section: Ask participants whether they would vote, who they 
 * How certain are you about your choice
   - Scale 1 to 5
   
-Demographics Section: This section collects detailed demographic characteristics of the participants to accurately predict the nation-wide election outcome.
+### Demographics Section: This section collects detailed demographic characteristics of the participants.
 
 * Your gender identification
   - Female
