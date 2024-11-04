@@ -64,7 +64,7 @@ Fist we take a look at the the polling data.
 
 The data set contain 17208 observations of polls, for our propose, we choose only to include 1176 entries, the justification for this data selection is given in the [Justification](#justification_poll) section. 
 
-##Data Measurement
+## Data Measurement
 The data was organized by FiveThirtyEight (2024), collected form polls made by various institutions, they each use a distinct methodology. While FiveThirtyEight checks their methodology, and include the polling data if it meets their standard. An example of the methodology of one poll is included in [Appendix 1](#appendix1) It is a reliable and comprehensive source of US election polls， so we have choose this data set.  
 
 ## Justification For Poll Selection{#justification_poll}
@@ -116,7 +116,7 @@ Candidate Name (`candidate_name`) is a categorical variable that specify the nam
 
 ```{r}
 #| label: fig-samplesize
-#| tbl-cap: Comparison of average polling result for two candiates
+#| fig-cap: Sample Sizes of the Polls We Use
 #| include: true
 #| echo: false
 #| warning: false
@@ -288,7 +288,7 @@ In the modeling, we have view polling as taking one sample form the population, 
 
 \newpage
 
-# Appendix 1: Polling methodology {#Appendix1}
+# Appendix 1: Polling methodology {#appendix1}
 
 ## Overview of Morning Consult
 Morning Consult is a globally renowned enterprise technology company that specializes in providing intelligent data to support leaders' decision-making processes. Morning Consult has established itself as a key player in the field of artificial intelligence and decision-making consulting. The company offers a suite of services that include market research, brand analysis, consumer behavior studies, and more. So that the company can optimize decision-making processes and provide clients with a competitive edge[@morningconsult_website]
@@ -340,13 +340,13 @@ On the other hand, the questionnaire requests the interviewers to identify their
 The survey aims to capture voter intention and mood across important demographic and geographic divisions in order to predict the result of the US presidential election. This survey's methodology employs stratify sampling, effective respondent recruitment strategy and data validation techniques to ensure the accuracy of prediction.
 
 ## Sampling Approach
-This survey employs Stratified Random Sampling, which involves divide the target population(In this case, the people who are eligible to vote in US) into subgroups(strata) based on their demographics characteristic[@stantchevaonline]. To simulate the national electorate, stratify the sample according to age, gender, race/ethnicity, education level, urban/rural domicile, and region. Also refer to the US Census data to determine the proportion of each strata, for example: if the census data shows there are 20% US citizen are between the age of 20 to 30, then there should be 20% of respondent in this age range. We aim for a starting sample of five thousand people since there were budget constraint.
+This survey employs Stratified Random Sampling, which involves divide the target population(In this case, the people who are eligible to vote in US) into subgroups based on their demographics characteristic [@stantchevaonline]. To simulate the national electorate, stratify the sample according to age, gender, race/ethnicity, education level, urban/rural domicile, and region. Also refer to the US Census data to determine the proportion of each strata, for example: if the census data shows there are 20% US citizen are between the age of 20 to 30, then there should be 20% of respondent in this age range. We aim for a starting sample of five thousand people since there were budget constraint.
 
 ## Respondent Recruitment
-Partner with an online panel provider to find respondents that match each stratum’s specifications[@stantchevaonline]. Specify quotas to ensure that, for instance, you wish to have 18% of respondents from the Midwest or 25% aging between 30 - 40. Then randomly select respondent within each strata. To promote greater response rates and retention, provide a small monetary reward, such as $5 for each completed survey. To improve inclusivity and take into consideration differences in internet availability, use both phone and online surveys. 
+Partner with an online panel provider to find respondents that match each stratum’s specifications [@stantchevaonline]. Specify quotas to ensure that, for instance, you wish to have 18% of respondents from the Midwest or 25% aging between 30 - 40. Then randomly select respondent within each strata. To promote greater response rates and retention, provide a small monetary reward, such as $5 for each completed survey. To improve inclusivity and take into consideration differences in internet availability, use both phone and online surveys. 
 
 ## Data Validation
-To keep distinct replies between responses, make sure respondents don't participate more than once each wave, and highlight straight-lining, inconsistent replies, and other low-effort answers for data quality purposes[@horn1997effective].
+To keep distinct replies between responses, make sure respondents don't participate more than once each wave, and highlight straight-lining, inconsistent replies, and other low-effort answers for data quality purposes [@horn1997effective].
 
 ## Budget Expenditure
 * \$50k - \$60k for panel provider
@@ -469,22 +469,29 @@ Link to the survey: https://forms.gle/spJjASENRQ6nKK1E6
 
 ```{r}
 #| label: fig-diagnostics_harris
-#| tbl-cap: Model diagnostics for Harris model
+#| fig-cap: Model diagnostics for Harris model
 #| include: true
 #| echo: false
 #| warning: false
 #| message: false
+#| fig.width: 10
+#| fig.height: 7
+
 par(mfrow = c(2, 2))  
 plot(model_harris)
 ```
 
 ```{r}
 #| label: fig-diagnostics_trump
-#| tbl-cap: Model diagnostics for Trump model
+#| fig-cap: Model diagnostics for Trump model
 #| include: true
 #| echo: false
 #| warning: false
 #| message: false
+#| fig.width: 10
+#| fig.height: 7
+
+
 par(mfrow = c(2, 2))  
 plot(model_trump)
 ```
