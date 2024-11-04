@@ -1,7 +1,7 @@
 #### Preamble ####
-# Purpose: Test various models and choose one to save
+# Purpose: make prediction using the model
 # Author: David Qi
-# Date: Nov Oct 2024
+# Date: 04 Nov 2024
 # Contact: david.qi@mail.utoronto.ca 
 # License: MIT
 # Pre-requisites: Model are complete and saved in "models/", cleaned DJIA data saved in "data/02-analysis_data/DJIA_filled.parquet"
