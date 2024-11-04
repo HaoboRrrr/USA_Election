@@ -1,8 +1,11 @@
 # Analysing the 2024 U.S. Presidential Election: Spotlight on North Carolina's Role as a Battleground State
 
 ## Overview
+This repository is conducted by R, including all necessary code, data, model and analysis used to predict the outcome of 2024 US Presidential Election.
 
-This repo is for Analysis on USA Election
+This repository will make use of predictive modeling to create a model that aim to predict the results of the 2024 United States presidential election. The model's goal is to forecast the outcome of a poll that closes on November 5, 2024. We think this will represent the outcome of the election that day, and the election's outcome may be presumed to be around the mean of these polls.
+
+According to our calculations, Donald Trump has a 6.6% chance of winning this election. We choose North Carolina as the most crucial battleground state based on our projection.
 
 ## File Structure
 
@@ -20,11 +23,3 @@ The repo is structured as:
 
 Some of the code was written with the help of the ChatGPT-4o model, which also helped with language paraphrase. Other/llm_usage/usage.txt contains the entire chat history.
 
-## TODOs:
-### Part finished: 
-- Script part: change file format parquet to fit with requirement
-- Appendix 2(idealized methodology): update according to comment
-### Parts waiting: 
-- Main Essay
-- Appendix 1(Analysis methodology)
-- Appendix 3(model selection)
